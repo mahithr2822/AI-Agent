@@ -1,188 +1,151 @@
-# AI-Agent
-Absolutely! Here's a more concise version under 250 characters:  An AI agent is a system that senses its environment, processes data, and acts to achieve goals. It uses AI methods like learning and decision-making, enabling applications like chatbots, robots, and virtual assistants.
+<img src="./assets/web-ui.png" alt="Browser Use Web UI" width="full"/>
 
-GitHub stars Discord Cloud Documentation Twitter Follow Twitter Follow Weave Badge
+<br/>
 
-🌤️ Want to skip the setup? Use our cloud for faster, scalable, stealth-enabled browser automation!
+[![GitHub stars](https://img.shields.io/github/stars/browser-use/web-ui?style=social)](https://github.com/browser-use/web-ui/stargazers)
+[![Discord](https://img.shields.io/discord/1303749220842340412?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://link.browser-use.com/discord)
+[![Documentation](https://img.shields.io/badge/Documentation-📕-blue)](https://docs.browser-use.com)
+[![WarmShao](https://img.shields.io/twitter/follow/warmshao?style=social)](https://x.com/warmshao)
 
-Quick start
-With pip (Python>=3.11):
+This project builds upon the foundation of the [browser-use](https://github.com/browser-use/browser-use), which is designed to make websites accessible for AI agents.
 
-pip install browser-use
-If you don't already have Chrome or Chromium installed, you can also download the latest Chromium using playwright's install shortcut:
+We would like to officially thank [WarmShao](https://github.com/warmshao) for his contribution to this project.
 
-uvx playwright install chromium --with-deps --no-shell
-Spin up your agent:
+**WebUI:** is built on Gradio and supports most of `browser-use` functionalities. This UI is designed to be user-friendly and enables easy interaction with the browser agent.
 
-import asyncio
-from dotenv import load_dotenv
-load_dotenv()
-from browser_use import Agent, ChatOpenAI
+**Expanded LLM Support:** We've integrated support for various Large Language Models (LLMs), including: Google, OpenAI, Azure OpenAI, Anthropic, DeepSeek, Ollama etc. And we plan to add support for even more models in the future.
 
-async def main():
-    agent = Agent(
-        task="Find the number of stars of the browser-use repo",
-        llm=ChatOpenAI(model="gpt-4.1-mini"),
-    )
-    await agent.run()
+**Custom Browser Support:** You can use your own browser with our tool, eliminating the need to re-login to sites or deal with other authentication challenges. This feature also supports high-definition screen recording.
 
-asyncio.run(main())
-Add your API keys for the provider you want to use to your .env file.
+**Persistent Browser Sessions:** You can choose to keep the browser window open between AI tasks, allowing you to see the complete history and state of AI interactions.
 
-OPENAI_API_KEY=
-For other settings, models, and more, check out the documentation 📕.
+<video src="https://github.com/user-attachments/assets/56bc7080-f2e3-4367-af22-6bf2245ff6cb" controls="controls">Your browser does not support playing this video!</video>
 
-Demos
+## Installation Guide
 
+### Option 1: Local Installation
 
+Read the [quickstart guide](https://docs.browser-use.com/quickstart#prepare-the-environment) or follow the steps below to get started.
 
-Task: Add grocery items to cart, and checkout.
+#### Step 1: Clone the Repository
+```bash
+git clone https://github.com/browser-use/web-ui.git
+cd web-ui
+```
 
-AI Did My Groceries
+#### Step 2: Set Up Python Environment
+We recommend using [uv](https://docs.astral.sh/uv/) for managing the Python environment.
 
+Using uv (recommended):
+```bash
+uv venv --python 3.11
+```
 
+Activate the virtual environment:
+- Windows (Command Prompt):
+```cmd
+.venv\Scripts\activate
+```
+- Windows (PowerShell):
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+- macOS/Linux:
+```bash
+source .venv/bin/activate
+```
 
+#### Step 3: Install Dependencies
+Install Python packages:
+```bash
+uv pip install -r requirements.txt
+```
 
-Prompt: Add my latest LinkedIn follower to my leads in Salesforce.
+Install Browsers in playwright. 
+```bash
+playwright install --with-deps
+```
+Or you can install specific browsers by running:
+```bash
+playwright install chromium --with-deps
+```
 
-LinkedIn to Salesforce
+#### Step 4: Configure Environment
+1. Create a copy of the example environment file:
+- Windows (Command Prompt):
+```bash
+copy .env.example .env
+```
+- macOS/Linux/Windows (PowerShell):
+```bash
+cp .env.example .env
+```
+2. Open `.env` in your preferred text editor and add your API keys and other settings
 
+#### Step 5: Enjoy the web-ui
+1.  **Run the WebUI:**
+    ```bash
+    python webui.py --ip 127.0.0.1 --port 7788
+    ```
+2. **Access the WebUI:** Open your web browser and navigate to `http://127.0.0.1:7788`.
+3. **Using Your Own Browser(Optional):**
+    - Set `BROWSER_PATH` to the executable path of your browser and `BROWSER_USER_DATA` to the user data directory of your browser. Leave `BROWSER_USER_DATA` empty if you want to use local user data.
+      - Windows
+        ```env
+         BROWSER_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe"
+         BROWSER_USER_DATA="C:\Users\YourUsername\AppData\Local\Google\Chrome\User Data"
+        ```
+        > Note: Replace `YourUsername` with your actual Windows username for Windows systems.
+      - Mac
+        ```env
+         BROWSER_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+         BROWSER_USER_DATA="/Users/YourUsername/Library/Application Support/Google/Chrome"
+        ```
+    - Close all Chrome windows
+    - Open the WebUI in a non-Chrome browser, such as Firefox or Edge. This is important because the persistent browser context will use the Chrome data when running the agent.
+    - Check the "Use Own Browser" option within the Browser Settings.
 
+### Option 2: Docker Installation
 
+#### Prerequisites
+- Docker and Docker Compose installed
+  - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (For Windows/macOS)
+  - [Docker Engine](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) (For Linux)
 
-Prompt: Read my CV & find ML jobs, save them to a file, and then start applying for them in new tabs, if you need help, ask me.'
+#### Step 1: Clone the Repository
+```bash
+git clone https://github.com/browser-use/web-ui.git
+cd web-ui
+```
 
- apply.to.jobs.8x.mp4 
+#### Step 2: Configure Environment
+1. Create a copy of the example environment file:
+- Windows (Command Prompt):
+```bash
+copy .env.example .env
+```
+- macOS/Linux/Windows (PowerShell):
+```bash
+cp .env.example .env
+```
+2. Open `.env` in your preferred text editor and add your API keys and other settings
 
+#### Step 3: Docker Build and Run
+```bash
+docker compose up --build
+```
+For ARM64 systems (e.g., Apple Silicon Macs), please run follow command:
+```bash
+TARGETPLATFORM=linux/arm64 docker compose up --build
+```
 
+#### Step 4: Enjoy the web-ui and vnc
+- Web-UI: Open `http://localhost:7788` in your browser
+- VNC Viewer (for watching browser interactions): Open `http://localhost:6080/vnc.html`
+  - Default VNC password: "youvncpassword"
+  - Can be changed by setting `VNC_PASSWORD` in your `.env` file
 
-Prompt: Write a letter in Google Docs to my Papa, thanking him for everything, and save the document as a PDF.
-
-Letter to Papa
-
-
-
-
-Prompt: Look up models with a license of cc-by-sa-4.0 and sort by most likes on Hugging face, save top 5 to file.
-
- hugging_face_high_quality.mp4 
-
-
-
-More examples
-For more examples see the examples folder or join the Discord and show off your project. You can also see our awesome-prompts repo for prompting inspiration.
-
-MCP Integration
-Browser-use supports the Model Context Protocol (MCP), enabling integration with Claude Desktop and other MCP-compatible clients.
-
-Use as MCP Server with Claude Desktop
-Add browser-use to your Claude Desktop configuration:
-
-{
-  "mcpServers": {
-    "browser-use": {
-      "command": "uvx",
-      "args": ["browser-use[cli]", "--mcp"],
-      "env": {
-        "OPENAI_API_KEY": "sk-..."
-      }
-    }
-  }
-}
-This gives Claude Desktop access to browser automation tools for web scraping, form filling, and more.
-
-Connect External MCP Servers to Browser-Use Agent
-Browser-use agents can connect to multiple external MCP servers to extend their capabilities:
-
-import asyncio
-from browser_use import Agent, Tools, ChatOpenAI
-from browser_use.mcp.client import MCPClient
-
-async def main():
-    # Initialize tools
-    tools = Tools()
-
-    # Connect to multiple MCP servers
-    filesystem_client = MCPClient(
-        server_name="filesystem",
-        command="npx",
-        args=["-y", "@modelcontextprotocol/server-filesystem", "/Users/me/documents"]
-    )
-
-    github_client = MCPClient(
-        server_name="github",
-        command="npx",
-        args=["-y", "@modelcontextprotocol/server-github"],
-        env={"GITHUB_TOKEN": "your-github-token"}
-    )
-
-    # Connect and register tools from both servers
-    await filesystem_client.connect()
-    await filesystem_client.register_to_tools(tools)
-
-    await github_client.connect()
-    await github_client.register_to_tools(tools)
-
-    # Create agent with MCP-enabled tools
-    agent = Agent(
-        task="Find the latest pdf report in my documents and create a GitHub issue about it",
-        llm=ChatOpenAI(model="gpt-4.1-mini"),
-        tools=tools  # Tools has tools from both MCP servers
-    )
-
-    # Run the agent
-    await agent.run()
-
-    # Cleanup
-    await filesystem_client.disconnect()
-    await github_client.disconnect()
-
-asyncio.run(main())
-See the MCP documentation for more details.
-
-Vision
-Tell your computer what to do, and it gets it done.
-
-Roadmap
-Agent
- Make agent 3x faster
- Reduce token consumption (system prompt, DOM state)
-DOM Extraction
- Enable interaction with all UI elements
- Improve state representation for UI elements so that any LLM can understand what's on the page
-Workflows
- Let user record a workflow - which we can rerun with browser-use as a fallback
-User Experience
- Create various templates for tutorial execution, job application, QA testing, social media, etc. which users can just copy & paste.
-Parallelization
- Human work is sequential. The real power of a browser agent comes into reality if we can parallelize similar tasks. For example, if you want to find contact information for 100 companies, this can all be done in parallel and reported back to a main agent, which processes the results and kicks off parallel subtasks again.
-Contributing
-We love contributions! Feel free to open issues for bugs or feature requests. To contribute to the docs, check out the /docs folder.
-
-🧪 How to make your agents robust?
-We offer to run your tasks in our CI—automatically, on every update!
-
-Add your task: Add a YAML file in tests/agent_tasks/ (see the README there for details).
-Automatic validation: Every time we push updates, your task will be run by the agent and evaluated using your criteria.
-Local Setup
-To learn more about the library, check out the local setup 📕.
-
-main is the primary development branch with frequent changes. For production use, install a stable versioned release instead.
-
-Swag
-Want to show off your Browser-use swag? Check out our Merch store. Good contributors will receive swag for free 👀.
-
-Citation
-If you use Browser Use in your research or project, please cite:
-
-@software{browser_use2024,
-  author = {Müller, Magnus and Žunič, Gregor},
-  title = {Browser Use: Enable AI to control your browser},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/browser-use/browser-use}
-}
-
-Twitter Follow Twitter Follow
-
-Made with ❤️ in Zurich and San Francisco
+## Changelog
+- [x] **2025/01/26:** Thanks to @vvincent1234. Now browser-use-webui can combine with DeepSeek-r1 to engage in deep thinking!
+- [x] **2025/01/10:** Thanks to @casistack. Now we have Docker Setup option and also Support keep browser open between tasks.[Video tutorial demo](https://github.com/browser-use/web-ui/issues/1#issuecomment-2582511750).
+- [x] **2025/01/06:** Thanks to @richard-devbot. A New and Well-Designed WebUI is released. [Video tutorial demo](https://github.com/warmshao/browser-use-webui/issues/1#issuecomment-2573393113).
