@@ -149,3 +149,18 @@ TARGETPLATFORM=linux/arm64 docker compose up --build
 - [x] **2025/01/26:** Thanks to @vvincent1234. Now browser-use-webui can combine with DeepSeek-r1 to engage in deep thinking!
 - [x] **2025/01/10:** Thanks to @casistack. Now we have Docker Setup option and also Support keep browser open between tasks.[Video tutorial demo](https://github.com/browser-use/web-ui/issues/1#issuecomment-2582511750).
 - [x] **2025/01/06:** Thanks to @richard-devbot. A New and Well-Designed WebUI is released. [Video tutorial demo](https://github.com/warmshao/browser-use-webui/issues/1#issuecomment-2573393113).
+
+
+<img width="1809" height="851" alt="image" src="https://github.com/user-attachments/assets/f271f3b8-5fdd-46bf-b75e-85300a33f68e" />
+
+<img width="1809" height="851" alt="image" src="https://github.com/user-attachments/assets/3bcc7194-fdb4-4549-a78c-ee4247f4b5cf" />
+
+<img width="2368" height="1646" alt="image" src="https://github.com/user-attachments/assets/de4c153d-0e35-4c06-903a-c77518fda2ca" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1cb100e-c5cb-4db2-9212-867957c0c144" />
+
+
+
+
+
+
