@@ -159,6 +159,13 @@ TARGETPLATFORM=linux/arm64 docker compose up --build
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1cb100e-c5cb-4db2-9212-867957c0c144" />
 
+![398959783-242ade3e-15bc-41c2-988f-cbc5415a66aa](https://github.com/user-attachments/assets/0c204bcc-80e8-4f23-8f35-78cb1f5fb34c)
+
+<img width="3324" height="2160" alt="videoframe_0" src="https://github.com/user-attachments/assets/43e66df4-b009-4f73-8061-506eadec9162" />
+
+
+
+
 
 
 
